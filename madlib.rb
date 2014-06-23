@@ -1,5 +1,5 @@
 require 'engtagger'
-require 'net/http'
+require 'rest-client'
 require 'json'
 require 'rexml/document'
 
@@ -7,7 +7,7 @@ $uri = URI("http://www.kimonolabs.com/api/6o548b0m?apikey=cae829be41ef6e13cfb7b9
 
 
 def get_text
-  body = Net::HTTP.get($uri)
+  body = RestClient.get($uri)
   parsed = JSON.parse(body)
   sign_object = parsed['results']['collection1'][0]
   #sign_name = sign_object['sign']
